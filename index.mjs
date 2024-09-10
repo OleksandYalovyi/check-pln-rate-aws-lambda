@@ -18,14 +18,14 @@ export const handler = async () => {
   console.log("res", res);
   console.log("rate", rate);
 
-  if (rate > 3.97) {
+  if (rate > process.env.UPPER_THRESHOLD) {
     await sendMsgToBot(
       `Coin api PLN rate = ${rate}!!! It's time to sell USD to PLN!!!`,
       process.env.CHAT_ID
     );
   }
 
-  if (rate < 3.91) {
+  if (rate < process.env.LOWER_THRESHOLD) {
     await sendMsgToBot(
       `Coin api PLN rate = ${rate}!!! It's time to buy USDT!!!`,
       process.env.CHAT_ID
